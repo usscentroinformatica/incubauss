@@ -10,8 +10,7 @@ import VerticalLines from './components/VerticalLines';
 import AlliesSection from './components/AlliesSection';
 import EnviarMensaje from './components/enviarmensaje';
 import Nosotros from './components/nosotros';
-// Importa otros componentes cuando los crees:
-// import Servicios from './components/Servicios';
+import Servicios from './components/servicios'; // ← Verifica que esté importado
 // import Contacto from './components/Contacto';
 // import Eventos from './components/Eventos';
 
@@ -32,12 +31,11 @@ const PaginaNosotros = () => (
   </>
 );
 
-// Componente para la página Servicios (cuando la crees)
-// const PaginaServicios = () => (
-//   <>
-//     <Servicios />
-//   </>
-// );
+const PaginaServicios = () => (
+   <>
+    <Servicios />
+  </>
+);
 
 // Componente para la página Contacto (cuando la crees)
 // const PaginaContacto = () => (
@@ -57,16 +55,16 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header /> {/* Header visible en todas las páginas */}
+        <Header />
         <Routes>
           <Route path="/" element={<PaginaInicio />} />
           <Route path="/inicio" element={<PaginaInicio />} />
           <Route path="/nosotros" element={<PaginaNosotros />} />
-          {/* <Route path="/servicios" element={<PaginaServicios />} /> */}
+          <Route path="/servicios" element={<PaginaServicios />} /> {/* ← DESCOMENTADO */}
           {/* <Route path="/contacto" element={<PaginaContacto />} /> */}
           {/* <Route path="/eventos" element={<PaginaEventos />} /> */}
         </Routes>
-        <Footer /> {/* Footer visible en todas las páginas */}
+        <Footer />
       </div>
     </Router>
   );
