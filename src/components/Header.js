@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react"; // Eliminamos useState porque ya no lo necesitamos
+import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/img/USS-Peq-blanco.png";
 import { FaBell } from "react-icons/fa";
 
 const Header = () => {
-  const [hovered, setHovered] = useState(null);
+  // Eliminamos el estado hovered porque ya no se usa
 
   const baseLinkStyle = {
     color: "white",
@@ -15,12 +16,12 @@ const Header = () => {
     fontSize: "1rem",
   };
 
-  const getLinkStyle = (name) => ({
+  // Función para determinar el estilo activo
+  const getActiveStyle = ({ isActive }) => ({
     ...baseLinkStyle,
-    backgroundColor: hovered === name ? "#22c55e" : "transparent",
-    transform: hovered === name ? "translateY(-2px)" : "translateY(0)",
-    // Cambiamos el color del texto a negro cuando está en hover para mejor contraste
-    color: hovered === name ? "black" : "white",
+    backgroundColor: isActive ? "#22c55e" : "transparent",
+    color: isActive ? "black" : "white",
+    transform: isActive ? "translateY(-2px)" : "translateY(0)",
   });
 
   return (
@@ -47,17 +48,20 @@ const Header = () => {
           justifyContent: "space-between",
         }}
       >
-        {/* Logo GRANDE a la izquierda */}
-        <img 
-          src={logo} 
-          alt="USS" 
-          style={{ 
-            height: "75px",
-            width: "auto",
-          }} 
-        />
+        {/* Logo - Link a inicio */}
+        <Link to="/">
+          <img 
+            src={logo} 
+            alt="USS" 
+            style={{ 
+              height: "75px",
+              width: "auto",
+              cursor: "pointer",
+            }} 
+          />
+        </Link>
 
-        {/* Contenedor CENTRADO con menú y botón JUNTOS */}
+        {/* Contenedor CENTRADO con menú y botón */}
         <div
           style={{
             display: "flex",
@@ -79,23 +83,43 @@ const Header = () => {
               padding: 0,
             }}
           >
-            {["Inicio", "Nosotros", "Servicios", "Contacto"].map((item) => (
-              <li key={item}>
-                <a
-                  href={`#${item.toLowerCase()}`}
-                  style={getLinkStyle(item)}
-                  onMouseEnter={() => setHovered(item)}
-                  onMouseLeave={() => setHovered(null)}
-                >
-                  {item}
-                </a>
-              </li>
-            ))}
+            <li>
+              <NavLink
+                to="/inicio"
+                style={getActiveStyle}
+              >
+                Inicio
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/nosotros"
+                style={getActiveStyle}
+              >
+                Nosotros
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/servicios"
+                style={getActiveStyle}
+              >
+                Servicios
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/contacto"
+                style={getActiveStyle}
+              >
+                Contacto
+              </NavLink>
+            </li>
           </ul>
 
-          {/* Botón Eventos - PEGADO a Contacto */}
-          <a
-            href="#eventos"
+          {/* Botón Eventos */}
+          <Link
+            to="/eventos"
             style={{
               backgroundColor: "#22c55e",
               padding: "8px 16px",
@@ -124,10 +148,10 @@ const Header = () => {
           >
             <FaBell size={16} />
             Eventos
-          </a>
+          </Link>
         </div>
 
-        {/* Espacio vacío a la derecha para equilibrar el logo (opcional) */}
+        {/* Espacio vacío a la derecha */}
         <div style={{ width: "75px" }}></div>
       </div>
     </header>
