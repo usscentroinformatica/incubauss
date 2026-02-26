@@ -17,9 +17,10 @@ const Header = () => {
 
   const getLinkStyle = (name) => ({
     ...baseLinkStyle,
-    backgroundColor:
-      hovered === name ? "rgba(255,255,255,0.15)" : "transparent",
+    backgroundColor: hovered === name ? "#22c55e" : "transparent",
     transform: hovered === name ? "translateY(-2px)" : "translateY(0)",
+    // Cambiamos el color del texto a negro cuando está en hover para mejor contraste
+    color: hovered === name ? "black" : "white",
   });
 
   return (
@@ -62,16 +63,16 @@ const Header = () => {
             display: "flex",
             alignItems: "center",
             gap: "8px",
-            position: "absolute", // Para centrar
-            left: "50%",          // Esto lo centra
-            transform: "translateX(-50%)", // Ajuste fino del centrado
+            position: "absolute",
+            left: "50%",
+            transform: "translateX(-50%)",
           }}
         >
           {/* Menú de navegación */}
           <ul
             style={{
               display: "flex",
-              gap: "8px", // Reducido para que estén más juntos
+              gap: "8px",
               listStyle: "none",
               alignItems: "center",
               margin: 0,
@@ -108,7 +109,7 @@ const Header = () => {
               transition: "all 0.3s ease",
               fontSize: "0.95rem",
               border: "2px solid transparent",
-              marginLeft: "2px", // Mínimo margen para separar apenas
+              marginLeft: "2px",
             }}
             onMouseEnter={(e) => {
               e.target.style.backgroundColor = "transparent";

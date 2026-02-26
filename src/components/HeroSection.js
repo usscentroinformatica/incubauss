@@ -21,7 +21,7 @@ const HeroSection = () => {
         fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif",
       }}
     >
-      {/* CAPA SUPERPUESTA (OVERLAY) - Para que todo se vea bien */}
+      {/* CAPA SUPERPUESTA (OVERLAY) - Modificada para menos verde y más transparencia */}
       <div
         style={{
           position: 'absolute',
@@ -29,7 +29,7 @@ const HeroSection = () => {
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.85) 0%, rgba(46, 204, 113, 0.75) 100%)',
+          background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.7) 0%, rgba(46, 204, 113, 0.4) 100%)',
           zIndex: 2,
           pointerEvents: 'none',
         }}
