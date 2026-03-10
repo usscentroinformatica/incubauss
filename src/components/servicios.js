@@ -4,284 +4,180 @@ import imagenMentoria from '../assets/imgServicios/sistema-mentoria-G-q7mkuvv5hn
 import imagenCapacitacion from '../assets/imgServicios/Capacitacion-G-q7mkud2doza0ntzpuy7qq5b7pzbf9j6azp9xa9tulo.png';
 import imagenAsesoramiento from '../assets/imgServicios/Asesoramiento-G-q7mkumgrlbmvvxm2c2a0f2xtnu13ei7mczss31fwvg.png';
 import imagenCoworking from '../assets/imgServicios/Coworking-G-q7mku3nzsmx5fqdddu5h17ols4lr4k4zmer2hi7sbw.png';
-import EnviarMensaje from './enviarmensaje'; // Importar el componente de contacto
 
 const Servicios = () => {
   // Colores principales
   const verdePrincipal = '#22c55e';
   const moradoPrincipal = '#3F3D99';
 
+
   return (
     <>
-      <section
-        style={{
-          padding: '40px 20px 40px 20px',
-          background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
-          fontFamily: "'Inter', 'Poppins', sans-serif",
+      {/* Título principal de la página con fondo blanco */}
+      <section style={{
+        padding: '60px 20px 20px 20px',
+        backgroundColor: '#ffffff',
+        fontFamily: "'Inter', 'Poppins', sans-serif",
+        textAlign: 'center'
+      }}>
+        <h1 style={{
+          fontSize: 'clamp(2.5rem, 6vw, 3.5rem)',
+          fontWeight: 800,
+          color: moradoPrincipal,
+          letterSpacing: '-0.03em',
+          margin: 0,
           position: 'relative',
-          overflow: 'hidden',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        {/* Elementos decorativos de fondo */}
-        <div style={{
-          position: 'absolute',
-          top: '-10%',
-          right: '-5%',
-          width: '400px',
-          height: '400px',
-          background: `radial-gradient(circle, ${verdePrincipal}10, transparent 70%)`,
-          borderRadius: '50%',
-          filter: 'blur(80px)',
-          zIndex: 0
-        }}></div>
-        
-        <div style={{
-          position: 'absolute',
-          bottom: '-10%',
-          left: '-5%',
-          width: '400px',
-          height: '400px',
-          background: `radial-gradient(circle, ${moradoPrincipal}10, transparent 70%)`,
-          borderRadius: '50%',
-          filter: 'blur(80px)',
-          zIndex: 0
-        }}></div>
-
-        <div style={{
-          maxWidth: '1100px',
-          width: '100%',
-          margin: '0 auto',
-          position: 'relative',
-          zIndex: 1,
+          display: 'inline-block'
         }}>
-          
-          {/* Título principal - Servicios */}
-          <h1 style={{
-            fontSize: 'clamp(1.8rem, 3.5vw, 2.2rem)',
-            fontWeight: 700,
-            textAlign: 'center',
-            margin: '0 0 40px 0',
-            color: moradoPrincipal,
-            letterSpacing: '-0.02em',
-            lineHeight: 1.2,
-            position: 'relative',
-          }}>
-            Servicios
-            <div style={{
-              position: 'absolute',
-              bottom: '-12px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              width: '80px',
-              height: '3px',
-              background: `linear-gradient(90deg, ${verdePrincipal}, ${moradoPrincipal})`,
-              borderRadius: '2px',
-            }}></div>
-          </h1>
-
-          {/* Función para renderizar cada sección */}
-          {[
-            {
-              tipo: 'texto-izquierda',
-              titulo: 'Mentoría',
-              imagen: imagenMentoria,
-              parrafos: [
-                'En <strong>INCUBA USS</strong>, creemos en el poder de la mentoría para impulsar el crecimiento y el éxito de los emprendedores. Es por eso que ofrecemos programas de mentoría personalizados para brindarles el apoyo y la orientación necesarios en su camino emprendedor.',
-                'Nuestro sistema de mentoría está diseñado para conectar a emprendedores con profesionales experimentados y exitosos en diferentes áreas de negocio. A través de sesiones individuales y grupales, nuestros mentores comparten sus conocimientos, experiencias y consejos prácticos para ayudar a los emprendedores a superar desafíos, desarrollar habilidades clave y tomar decisiones informadas.'
-              ]
-            },
-            {
-              tipo: 'texto-derecha',
-              titulo: 'Capacitación',
-              imagen: imagenCapacitacion,
-              parrafos: [
-                'En <strong>INCUBA USS</strong>, nos dedicamos a promover la cultura emprendedora y brindar apoyo integral a los emprendedores. Nuestros programas de capacitación se enfocan en fortalecer habilidades clave para el éxito empresarial con el respaldo del portal <strong>Ulearning</strong>.',
-                'A través de una selección cuidadosa de ideas de negocio, identificamos las áreas en las que cada emprendedor necesita crecer y desarrollarse. Nuestro enfoque se centra en temas fundamentales como liderazgo, trabajo en equipo, desarrollo actitudinal, creatividad e innovación, diseño de modelo de negocio, planificación estratégica, gestión legal y contable, administración financiera, gestión de procesos, diseño de imagen corporativa, protección de la propiedad intelectual y el uso de herramientas de presentación empresarial.'
-              ]
-            },
-            {
-              tipo: 'texto-izquierda',
-              titulo: 'Asesoramiento',
-              imagen: imagenAsesoramiento,
-              parrafos: [
-                '<strong>INCUBA USS</strong> se enorgullece de ofrecer un sólido programa de asesoramiento empresarial a los emprendedores que forman parte de nuestra incubadora y de la comunidad. Nuestro objetivo principal es brindar el apoyo necesario para impulsar el crecimiento y el éxito de los proyectos empresariales.',
-                'El asesoramiento empresarial personalizado se adapta a las necesidades específicas de cada emprendedor y proyecto. Nuestros asesores brindan apoyo en áreas clave como desarrollo de modelos de negocio, estrategia empresarial, marketing y ventas, gestión financiera, análisis de mercado y planificación estratégica.',
-                'En <strong>INCUBA USS</strong>, creemos en el poder de la colaboración y el intercambio de conocimientos. Además del asesoramiento individual, también fomentamos la creación de redes y la colaboración entre emprendedores dentro de nuestra comunidad. Organizamos eventos de networking, sesiones de intercambio de experiencias y actividades de aprendizaje conjunto para promover el crecimiento colectivo y el aprendizaje mutuo.'
-              ]
-            },
-            {
-              tipo: 'texto-derecha',
-              titulo: 'Coworking',
-              imagen: imagenCoworking,
-              parrafos: [
-                '<strong>INCUBA USS</strong> ofrece un espacio de coworking dinámico y colaborativo para emprendedores en nuestra incubadora. Nuestro coworking es un entorno inspirador donde los emprendedores pueden conectarse, trabajar y desarrollar sus emprendimientos.',
-                'En nuestro espacio de coworking, fomentamos la colaboración y el intercambio de ideas entre los emprendedores. Contamos con áreas de trabajo compartidas, salas de reuniones equipadas laptops, internet.'
-              ]
-            }
-          ].map((seccion, index) => (
-            <div
-              key={index}
-              style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '30px',
-                alignItems: 'center',
-                marginBottom: index === 3 ? '0' : '50px', // Sin margen en la última sección
-              }}
-            >
-              {/* Texto - se muestra izquierda o derecha según el tipo */}
-              {seccion.tipo === 'texto-izquierda' ? (
-                <>
-                  {/* Texto a la izquierda */}
-                  <div style={{
-                    backgroundColor: 'white',
-                    borderRadius: '20px',
-                    padding: '25px',
-                    boxShadow: `0 10px 25px -10px ${moradoPrincipal}30`,
-                    border: `1px solid ${moradoPrincipal}10`,
-                    position: 'relative',
-                    overflow: 'hidden',
-                    height: 'fit-content',
-                  }}>
-                    <div style={{
-                      position: 'absolute',
-                      top: '-15px',
-                      right: '-15px',
-                      width: '100px',
-                      height: '100px',
-                      background: `radial-gradient(circle, ${verdePrincipal}10, transparent 70%)`,
-                      borderRadius: '50%',
-                      zIndex: 0
-                    }}></div>
-                    <div style={{ position: 'relative', zIndex: 1 }}>
-                      {seccion.parrafos.map((texto, i) => (
-                        <p
-                          key={i}
-                          style={{
-                            fontSize: '0.95rem',
-                            lineHeight: 1.6,
-                            color: '#334155',
-                            margin: i < seccion.parrafos.length - 1 ? '0 0 15px 0' : 0,
-                            fontWeight: 400,
-                          }}
-                          dangerouslySetInnerHTML={{ __html: texto }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                  {/* Imagen a la derecha */}
-                  <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}>
-                    <div style={{
-                      width: '100%',
-                      maxWidth: '400px',
-                      borderRadius: '16px',
-                      overflow: 'hidden',
-                      boxShadow: `0 15px 30px -10px ${moradoPrincipal}40`,
-                      border: `3px solid white`,
-                      transition: 'transform 0.3s ease',
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
-                    onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
-                      <img src={seccion.imagen} alt={seccion.titulo} style={{ width: '100%', height: 'auto', display: 'block' }} />
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <>
-                  {/* Imagen a la izquierda */}
-                  <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}>
-                    <div style={{
-                      width: '100%',
-                      maxWidth: '400px',
-                      borderRadius: '16px',
-                      overflow: 'hidden',
-                      boxShadow: `0 15px 30px -10px ${moradoPrincipal}40`,
-                      border: `3px solid white`,
-                      transition: 'transform 0.3s ease',
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
-                    onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
-                      <img src={seccion.imagen} alt={seccion.titulo} style={{ width: '100%', height: 'auto', display: 'block' }} />
-                    </div>
-                  </div>
-                  {/* Texto a la derecha */}
-                  <div style={{
-                    backgroundColor: 'white',
-                    borderRadius: '20px',
-                    padding: '25px',
-                    boxShadow: `0 10px 25px -10px ${moradoPrincipal}30`,
-                    border: `1px solid ${moradoPrincipal}10`,
-                    position: 'relative',
-                    overflow: 'hidden',
-                    height: 'fit-content',
-                  }}>
-                    <div style={{
-                      position: 'absolute',
-                      top: '-15px',
-                      right: '-15px',
-                      width: '100px',
-                      height: '100px',
-                      background: `radial-gradient(circle, ${verdePrincipal}10, transparent 70%)`,
-                      borderRadius: '50%',
-                      zIndex: 0
-                    }}></div>
-                    <div style={{ position: 'relative', zIndex: 1 }}>
-                      {seccion.parrafos.map((texto, i) => (
-                        <p
-                          key={i}
-                          style={{
-                            fontSize: '0.95rem',
-                            lineHeight: 1.6,
-                            color: '#334155',
-                            margin: i < seccion.parrafos.length - 1 ? '0 0 15px 0' : 0,
-                            fontWeight: 400,
-                          }}
-                          dangerouslySetInnerHTML={{ __html: texto }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </>
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* Estilos responsive */}
-        <style>{`
-          @media (max-width: 968px) {
-            div[style*="grid-template-columns: 1fr 1fr"] {
-              grid-template-columns: 1fr !important;
-              gap: 25px !important;
-            }
-            div[style*="max-width: '400px'"] {
-              max-width: 100% !important;
-            }
-          }
-          @media (max-width: 768px) {
-            h1 { font-size: 2rem !important; }
-            div[style*="padding: 25px"] { padding: 20px !important; }
-            p { font-size: 0.9rem !important; }
-          }
-          @media (max-width: 480px) {
-            h1 { font-size: 1.8rem !important; }
-          }
-        `}</style>
+          Nuestros <span style={{ color: verdePrincipal }}>Servicios</span>
+          <div style={{
+            position: 'absolute',
+            bottom: '-15px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '80px',
+            height: '4px',
+            background: `linear-gradient(90deg, ${verdePrincipal}, ${moradoPrincipal})`,
+            borderRadius: '2px',
+          }}></div>
+        </h1>
       </section>
 
-      {/* Componente EnviarMensaje al final */}
-      <EnviarMensaje />
+      {/* Secciones de servicios alternadas */}
+      {[
+        {
+          titulo: 'Mentoría',
+          imagen: imagenMentoria,
+          parrafos: [
+            'En <strong>INCUBA USS</strong>, creemos en el poder de la mentoría para impulsar el crecimiento y el éxito de los emprendedores. Es por eso que ofrecemos programas de mentoría personalizados para brindarles el apoyo y la orientación necesarios.',
+            'Nuestro sistema conecta a emprendedores con profesionales experimentados que comparten conocimientos y consejos prácticos para superar desafíos y desarrollar habilidades clave.'
+          ]
+        },
+        {
+          titulo: 'Capacitación',
+          imagen: imagenCapacitacion,
+          parrafos: [
+            'Nos dedicamos a promover la cultura emprendedora. Nuestros programas se enfocan en fortalecer habilidades clave para el éxito empresarial con el respaldo del portal <strong>Ulearning</strong>.',
+            'Abordamos temas fundamentales como liderazgo, modelo de negocio, planificación estratégica, administración financiera y marketing digital, preparando a tu empresa para el siguiente nivel.'
+          ]
+        },
+        {
+          titulo: 'Asesoramiento',
+          imagen: imagenAsesoramiento,
+          parrafos: [
+            'Ofrecemos un sólido programa de asesoramiento empresarial adaptado a las necesidades específicas de cada proyecto. Nuestros expertos brindan apoyo en áreas clave como estrategia, ventas y gestión legal.',
+            'Además, fomentamos la creación de redes y la colaboración dentro de nuestra comunidad, organizando eventos de networking para potenciar el aprendizaje mutuo.'
+          ]
+        },
+        {
+          titulo: 'Coworking',
+          imagen: imagenCoworking,
+          parrafos: [
+            'Ofrecemos un espacio de coworking dinámico y colaborativo. Es un entorno inspirador donde los emprendedores pueden conectarse, trabajar y desarrollar sus ideas con total comodidad.',
+            'Contamos con áreas compartidas y salas de reuniones equipadas con laptops e internet de alta velocidad, diseñadas para fomentar la sinergia entre startups.'
+          ]
+        }
+      ].map((seccion, index) => {
+        const esPar = index % 2 === 0;
+        const bgColor = esPar ? '#f1f5f9' : '#ffffff';
+
+        return (
+          <section
+            key={index}
+            style={{
+              padding: '100px 20px',
+              backgroundColor: bgColor,
+              fontFamily: "'Inter', 'Poppins', sans-serif",
+              overflow: 'hidden',
+              display: 'flex',
+              justifyContent: 'center',
+              borderTop: esPar ? '1px solid #e2e8f0' : 'none',
+              borderBottom: esPar ? '1px solid #e2e8f0' : 'none',
+            }}
+          >
+            <div style={{
+              maxWidth: '1100px',
+              width: '100%',
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '60px',
+              alignItems: 'center',
+            }}>
+              {/* Imagen (Alterna izquierda/derecha) */}
+              <div style={{
+                order: esPar ? 2 : 1,
+                display: 'flex',
+                justifyContent: 'center',
+              }}>
+                <div style={{
+                  width: '100%',
+                  maxWidth: '450px',
+                  borderRadius: '24px',
+                  overflow: 'hidden',
+                  boxShadow: `0 25px 50px -12px ${moradoPrincipal}20`,
+                  border: '8px solid white',
+                  transition: 'transform 0.4s ease-out',
+                }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.03) translateY(-10px)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1) translateY(0)'}>
+                  <img src={seccion.imagen} alt={seccion.titulo} style={{ width: '100%', height: 'auto', display: 'block' }} />
+                </div>
+              </div>
+
+              {/* Texto (Alterna izquierda/derecha) */}
+              <div style={{ order: esPar ? 1 : 2 }}>
+                <h2 style={{
+                  fontSize: '2.2rem',
+                  fontWeight: 800,
+                  color: moradoPrincipal,
+                  marginBottom: '25px',
+                  position: 'relative'
+                }}>
+                  {seccion.titulo}
+                  <span style={{
+                    position: 'absolute',
+                    left: 0,
+                    bottom: '-8px',
+                    width: '40px',
+                    height: '4px',
+                    backgroundColor: verdePrincipal,
+                    borderRadius: '2px'
+                  }}></span>
+                </h2>
+
+                {seccion.parrafos.map((texto, i) => (
+                  <p
+                    key={i}
+                    style={{
+                      fontSize: '1.1rem',
+                      lineHeight: 1.7,
+                      color: '#475569',
+                      marginBottom: '20px',
+                    }}
+                    dangerouslySetInnerHTML={{ __html: texto }}
+                  />
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })}
+
+      <style>{`
+        @media (max-width: 968px) {
+          div[style*="grid-template-columns: 1fr 1fr"] {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
+          div[style*="order: 2"], div[style*="order: 1"] {
+            order: unset !important;
+          }
+          section {
+            padding: 60px 20px !important;
+          }
+          h2 { font-size: 1.8rem !important; }
+        }
+      `}</style>
     </>
   );
 };

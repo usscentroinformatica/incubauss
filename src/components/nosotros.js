@@ -1,11 +1,9 @@
-// components/Nosotros.js
 import React from 'react';
 import imagenHistoria from '../assets/img/Incuba-vector-transp.png';
 import { FaLinkedinIn } from 'react-icons/fa';
-import EnviarMensaje from './enviarmensaje';
 
 // ============================================
-//  IMPORTACIONES DE IMÁGENES
+//  IMPORTACIONES DE IMÁGENES (se mantienen igual)
 // ============================================
 
 // Imágenes del equipo gestor
@@ -36,117 +34,108 @@ import NicidaMalcaImg from '../assets/imgNosotros/Nicida2-204x300.jpg';
 import JannetGuillermoImg from '../assets/imgNosotros/Mirella-204x300.jpg';
 
 // ============================================
-//  COMPONENTE TARJETA REUTILIZABLE
+//  COMPONENTE TARJETA REUTILIZABLE (se mantiene igual)
 // ============================================
 const PersonaCard = ({ imagen, nombre, cargo, linkedinUrl, moradoPrincipal, verdePrincipal }) => (
   <div
+    className="team-card"
     style={{
-      backgroundColor: 'white',
-      borderRadius: '20px', // Bordes redondeados en la tarjeta
+      backgroundColor: 'rgba(255, 255, 255, 0.4)',
+      backdropFilter: 'blur(10px)',
+      borderRadius: '24px',
       overflow: 'hidden',
-      boxShadow: `0 10px 20px -8px ${moradoPrincipal}30`,
-      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-      border: `2px solid ${moradoPrincipal}`,
+      boxShadow: `0 10px 30px -10px ${moradoPrincipal}20`,
+      transition: 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+      border: `1px solid rgba(255, 255, 255, 0.3)`,
       width: '100%',
-    }}
-    onMouseEnter={(e) => {
-      e.currentTarget.style.transform = 'translateY(-5px)';
-      e.currentTarget.style.boxShadow = `0 20px 30px -12px ${moradoPrincipal}80`;
-      e.currentTarget.style.borderColor = verdePrincipal;
-    }}
-    onMouseLeave={(e) => {
-      e.currentTarget.style.transform = 'translateY(0)';
-      e.currentTarget.style.boxShadow = `0 10px 20px -8px ${moradoPrincipal}30`;
-      e.currentTarget.style.borderColor = moradoPrincipal;
+      position: 'relative',
     }}
   >
-    {/* Contenedor de imagen */}
+    {/* Contenedor de imagen con gradiente decorativo */}
     <div style={{
       width: '100%',
-      height: '250px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: '#f8fafc',
-      padding: '15px',
+      height: '240px',
+      overflow: 'hidden',
+      position: 'relative',
+      backgroundColor: '#f1f5f9',
     }}>
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: `linear-gradient(to bottom, transparent 60%, ${moradoPrincipal}20)`,
+        zIndex: 1,
+      }}></div>
       <img
         src={imagen}
         alt={nombre}
         style={{
-          width: '100%',
-          height: '100%',
-          maxWidth: '100%',
-          maxHeight: '100%',
+          width: 'calc(100% - 20px)',
+          height: 'calc(100% - 20px)',
           objectFit: 'contain',
-          display: 'block',
-          borderRadius: '16px', // Bordes redondeados en la imagen
+          transition: 'all 0.3s ease',
+          borderRadius: '20px',
+          backgroundColor: '#f8fafc', // Fondo sutil para que el redondeado se note si el logo es transparente
         }}
+        className="card-img"
       />
     </div>
 
     {/* Contenido de texto */}
     <div style={{
-      padding: '15px 12px 20px 12px',
+      padding: '20px 15px',
       textAlign: 'center',
+      position: 'relative',
+      zIndex: 2,
     }}>
       <h3 style={{
-        fontSize: '1rem',
-        fontWeight: 600,
+        fontSize: '1.1rem',
+        fontWeight: 700,
         color: moradoPrincipal,
-        margin: '0 0 5px 0',
-        lineHeight: 1.3,
-        minHeight: '40px',
+        margin: '0 0 4px 0',
+        lineHeight: 1.2,
       }}>
         {nombre}
       </h3>
-      
-      {cargo && (
+
+      {cargo ? (
         <p style={{
-          fontSize: '0.8rem',
-          fontWeight: 500,
-          color: '#64748b',
-          margin: '0 0 12px 0',
+          fontSize: '0.75rem',
+          fontWeight: 600,
+          color: verdePrincipal,
+          margin: '0 0 15px 0',
           textTransform: 'uppercase',
-          letterSpacing: '0.3px',
-          minHeight: '30px',
+          letterSpacing: '0.05em',
         }}>
           {cargo}
         </p>
+      ) : (
+        <div style={{ height: '15px' }}></div>
       )}
 
-      {/* Icono LinkedIn */}
+      {/* Icono LinkedIn flotante */}
       <a
         href={linkedinUrl}
         target="_blank"
         rel="noopener noreferrer"
+        className="linkedin-btn"
         style={{
           display: 'inline-flex',
           alignItems: 'center',
           justifyContent: 'center',
-          width: '36px',
-          height: '36px',
-          backgroundColor: verdePrincipal,
+          width: '40px',
+          height: '40px',
+          backgroundColor: 'white',
           color: moradoPrincipal,
-          borderRadius: '50%',
+          borderRadius: '12px',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
           transition: 'all 0.3s ease',
-          border: `2px solid ${verdePrincipal}`,
+          textDecoration: 'none',
         }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = moradoPrincipal;
-          e.currentTarget.style.color = 'white';
-          e.currentTarget.style.borderColor = moradoPrincipal;
-          e.currentTarget.style.transform = 'translateY(-3px)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = verdePrincipal;
-          e.currentTarget.style.color = moradoPrincipal;
-          e.currentTarget.style.borderColor = verdePrincipal;
-          e.currentTarget.style.transform = 'translateY(0)';
-        }}
-        onClick={(e) => e.stopPropagation()}
       >
-        <FaLinkedinIn size={16} />
+        <FaLinkedinIn size={18} />
       </a>
     </div>
   </div>
@@ -160,10 +149,11 @@ const Nosotros = () => {
   const verdePrincipal = '#22c55e';
   const moradoPrincipal = '#3F3D99';
 
+
   // ==========================================
-  //  DATOS DE LOS EQUIPOS
+  //  DATOS DE LOS EQUIPOS (se mantienen igual)
   // ==========================================
-  
+
   // Equipo gestor (4 personas)
   const equipoGestor = [
     {
@@ -234,10 +224,13 @@ const Nosotros = () => {
 
   return (
     <>
+      {/* ========================================
+          SECCIÓN 1: QUIENES SOMOS
+      ======================================== */}
       <section
         style={{
-          padding: '30px 20px 40px 20px',
-          background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
+          padding: '80px 20px',
+          background: '#ffffff',
           fontFamily: "'Inter', 'Poppins', sans-serif",
           position: 'relative',
           overflow: 'hidden',
@@ -246,26 +239,14 @@ const Nosotros = () => {
           alignItems: 'center',
         }}
       >
-        {/* Elementos decorativos de fondo */}
+        {/* Decoración sutil */}
         <div style={{
           position: 'absolute',
           top: '-10%',
           right: '-5%',
           width: '400px',
           height: '400px',
-          background: `radial-gradient(circle, ${verdePrincipal}10, transparent 70%)`,
-          borderRadius: '50%',
-          filter: 'blur(80px)',
-          zIndex: 0
-        }}></div>
-        
-        <div style={{
-          position: 'absolute',
-          bottom: '-10%',
-          left: '-5%',
-          width: '400px',
-          height: '400px',
-          background: `radial-gradient(circle, ${moradoPrincipal}10, transparent 70%)`,
+          background: `radial-gradient(circle, ${verdePrincipal}08, transparent 70%)`,
           borderRadius: '50%',
           filter: 'blur(80px)',
           zIndex: 0
@@ -278,148 +259,145 @@ const Nosotros = () => {
           position: 'relative',
           zIndex: 1,
         }}>
-          
-          {/* ========================================
-              SECCIÓN 1: QUIENES SOMOS (MEJORADO)
-          ======================================== */}
-          <div style={{
-            marginBottom: '70px',
-          }}>
-            <h1 style={{
-              fontSize: 'clamp(2rem, 4vw, 2.5rem)',
-              fontWeight: 700,
-              textAlign: 'center',
-              margin: '0 0 40px 0',
-              color: moradoPrincipal,
-              letterSpacing: '-0.02em',
-              lineHeight: 1.2,
-              position: 'relative',
-            }}>
-              Quienes Somos
-              <div style={{
-                position: 'absolute',
-                bottom: '-12px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: '100px',
-                height: '4px',
-                background: `linear-gradient(90deg, ${verdePrincipal}, ${moradoPrincipal})`,
-                borderRadius: '2px',
-              }}></div>
-            </h1>
-
-            {/* Contenedor de dos columnas */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '40px',
-              alignItems: 'center',
-            }}>
-              
-              {/* Columna izquierda - Imagen MÁS GRANDE */}
-              <div style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
+          <div style={{ position: 'relative' }}>
+            {/* Título de Sección */}
+            <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+              <h1 style={{
+                fontSize: 'clamp(2rem, 5vw, 2.8rem)',
+                fontWeight: 800,
+                color: moradoPrincipal,
+                margin: '0 0 10px 0',
+                letterSpacing: '-0.02em',
               }}>
+                Quiénes Somos
+              </h1>
+              <div style={{
+                width: '60px',
+                height: '4px',
+                background: verdePrincipal,
+                margin: '0 auto',
+                borderRadius: '2px'
+              }}></div>
+            </div>
+
+            <div style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: '50px',
+              position: 'relative',
+              flexWrap: 'wrap',
+            }}>
+              {/* Lado de Imagen */}
+              <div style={{ flex: '1', minWidth: '320px', position: 'relative' }}>
                 <div style={{
                   width: '100%',
-                  maxWidth: '480px', // Aumentado de 400px a 480px
-                  borderRadius: '24px', // Bordes redondeados
+                  borderRadius: '24px',
                   overflow: 'hidden',
-                  boxShadow: `0 25px 50px -15px ${moradoPrincipal}50`,
+                  boxShadow: `20px 20px 40px -20px ${moradoPrincipal}30`,
+                  border: '1px solid #f1f5f9',
                 }}>
-                  <img 
+                  <img
                     src={imagenHistoria}
-                    alt="INCUBA USS"
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      display: 'block',
-                      borderRadius: '24px', // Bordes redondeados en la imagen
-                    }}
+                    alt="INCUBA USS Team"
+                    style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }}
                   />
                 </div>
-              </div>
-
-              {/* Columna derecha - Texto */}
-              <div style={{
-                backgroundColor: 'white',
-                borderRadius: '24px', // Bordes redondeados
-                padding: '35px',
-                boxShadow: `0 20px 40px -15px ${moradoPrincipal}30`,
-                border: `1px solid ${moradoPrincipal}10`,
-                position: 'relative',
-                overflow: 'hidden',
-              }}>
                 <div style={{
                   position: 'absolute',
-                  top: '-15px',
+                  bottom: '-15px',
                   right: '-15px',
-                  width: '120px',
-                  height: '120px',
-                  background: `radial-gradient(circle, ${verdePrincipal}10, transparent 70%)`,
-                  borderRadius: '50%',
-                  zIndex: 0
+                  width: '80px',
+                  height: '80px',
+                  background: `${verdePrincipal}20`,
+                  borderRadius: '16px',
+                  zIndex: -1,
                 }}></div>
-                
-                <div style={{ position: 'relative', zIndex: 1 }}>
-                  <h2 style={{
-                    fontSize: '1.6rem',
-                    fontWeight: 600,
-                    color: moradoPrincipal,
-                    margin: '0 0 20px 0',
-                    borderBottom: `3px solid ${verdePrincipal}`,
-                    paddingBottom: '8px',
-                    display: 'inline-block',
-                  }}>
-                    Nuestra historia
-                  </h2>
+              </div>
 
-                  <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: '#334155', margin: '0 0 20px 0' }}>
-                    <span style={{ fontSize: '2.2rem', color: verdePrincipal, fontWeight: 700, marginRight: '4px', float: 'left', lineHeight: 0.8 }}>S</span>
-                    omos <strong style={{color: moradoPrincipal}}>INCUBA USS</strong>, la incubadora de emprendimiento de la <strong style={{color: moradoPrincipal}}>Universidad Señor de Sipán</strong>, comprometida en impulsar el espíritu emprendedor y promover el desarrollo de emprendimientos innovadores en nuestra comunidad universitaria y más allá, brindándoles un sistema integral de asesoría y mentoría.
-                  </p>
-                  
-                  <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: '#334155', margin: '0 0 20px 0' }}>
-                    Si tienes una idea de emprendimiento que deseas desarrollar o necesitas apoyo para llevar tu negocio al siguiente nivel, no dudes en contactarnos.
-                  </p>
-                  
+              {/* Lado de Texto */}
+              <div style={{ flex: '1.2', minWidth: '320px', padding: '10px' }}>
+                <h2 style={{
+                  fontSize: '1.6rem',
+                  fontWeight: 700,
+                  color: moradoPrincipal,
+                  margin: '0 0 20px 0',
+                  lineHeight: 1.2,
+                }}>
+                  Impulsamos el <span style={{ color: verdePrincipal }}>Talento Emprendedor</span>
+                </h2>
+
+                <p style={{ fontSize: '1.05rem', lineHeight: 1.6, color: '#475569', margin: '0 0 15px 0' }}>
+                  Somos <strong style={{ color: moradoPrincipal }}>INCUBA USS</strong>, la plataforma estratégica de la Universidad Señor de Sipán diseñada para transformar ideas innovadoras en empresas con impacto real.
+                </p>
+
+                <p style={{ fontSize: '1.05rem', lineHeight: 1.6, color: '#475569', margin: '0 0 25px 0' }}>
+                  Acompañamos a alumnos, egresados y emprendedores externos a través de un ecosistema sólido de <strong style={{ color: verdePrincipal }}>mentoría personalizada</strong> y redes de contacto.
+                </p>
+
+                <div style={{
+                  padding: '25px',
+                  backgroundColor: '#f8fafc',
+                  borderRadius: '20px',
+                  borderLeft: `5px solid ${verdePrincipal}`,
+                  boxShadow: '0 10px 20px rgba(0,0,0,0.02)'
+                }}>
                   <p style={{
-                    fontSize: '1.05rem', lineHeight: 1.7, color: moradoPrincipal,
-                    fontWeight: 600, fontStyle: 'italic', padding: '15px 20px',
-                    backgroundColor: `${verdePrincipal}08`, borderRadius: '16px',
-                    borderLeft: `4px solid ${verdePrincipal}`,
+                    fontSize: '1rem',
+                    lineHeight: 1.5,
+                    color: moradoPrincipal,
+                    fontWeight: 600,
                     margin: 0,
                   }}>
-                    ¡Estamos aquí para ayudarte a alcanzar tus metas emprendedoras!
+                    Nuestro propósito es guiarte hacia el éxito sostenible, conectando tu potencial con las necesidades del mercado global.
                   </p>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* ========================================
-              SECCIÓN 2: EQUIPO GESTOR
-          ======================================== */}
+      {/* ========================================
+          SECCIÓN 2: EQUIPO GESTOR (FONDO GRIS CLARO)
+      ======================================== */}
+      <section
+        style={{
+          padding: '80px 20px',
+          backgroundColor: '#f1f5f9',
+          fontFamily: "'Inter', 'Poppins', sans-serif",
+          position: 'relative',
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          borderTop: '1px solid #f1f5f9',
+          borderBottom: '1px solid #f1f5f9',
+        }}
+      >
+        <div style={{
+          maxWidth: '1200px',
+          width: '100%',
+          margin: '0 auto',
+          position: 'relative',
+          zIndex: 1,
+        }}>
           <h2 style={{
-            fontSize: 'clamp(1.8rem, 3vw, 2.2rem)',
-            fontWeight: 700,
+            fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
+            fontWeight: 800,
             textAlign: 'center',
-            margin: '0 0 40px 0',
+            margin: '0 0 60px 0',
             color: moradoPrincipal,
-            letterSpacing: '-0.02em',
-            lineHeight: 1.2,
             position: 'relative',
           }}>
-            Equipo gestor
+            Equipo Gestor
             <div style={{
               position: 'absolute',
-              bottom: '-10px',
+              bottom: '-12px',
               left: '50%',
               transform: 'translateX(-50%)',
               width: '80px',
-              height: '3px',
+              height: '4px',
               background: `linear-gradient(90deg, ${verdePrincipal}, ${moradoPrincipal})`,
               borderRadius: '2px',
             }}></div>
@@ -428,8 +406,7 @@ const Nosotros = () => {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '20px',
-            marginBottom: '60px',
+            gap: '24px',
           }}>
             {equipoGestor.map((persona, index) => (
               <PersonaCard
@@ -443,83 +420,102 @@ const Nosotros = () => {
               />
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* ========================================
-              SECCIÓN 3: EQUIPO DE MENTORES
-          ======================================== */}
+      {/* ========================================
+          SECCIÓN 3: MENTORES (FONDO BLANCO)
+      ======================================== */}
+      <section
+        style={{
+          padding: '100px 20px',
+          background: '#ffffff',
+          fontFamily: "'Inter', 'Poppins', sans-serif",
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <h2 style={{
-            fontSize: 'clamp(1.8rem, 3vw, 2.2rem)',
-            fontWeight: 700,
-            textAlign: 'center',
-            margin: '0 0 40px 0',
+            fontSize: 'clamp(2rem, 4.5vw, 2.8rem)',
+            fontWeight: 800,
             color: moradoPrincipal,
-            letterSpacing: '-0.02em',
-            lineHeight: 1.2,
-            position: 'relative',
+            margin: '0 0 15px 0',
           }}>
-            Equipo de mentores
-            <div style={{
-              position: 'absolute',
-              bottom: '-10px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              width: '80px',
-              height: '3px',
-              background: `linear-gradient(90deg, ${verdePrincipal}, ${moradoPrincipal})`,
-              borderRadius: '2px',
-            }}></div>
+            Nuestros <span style={{ color: verdePrincipal }}>Mentores</span>
           </h2>
+          <p style={{ color: '#64748b', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>
+            Expertos comprometidos con el desarrollo del ecosistema emprendedor.
+          </p>
+        </div>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '20px',
-            marginBottom: '60px',
+        <div className="mentor-ticker-wrapper" style={{
+          width: '100vw',
+          position: 'relative',
+          left: '50%',
+          right: '50%',
+          marginLeft: '-50vw',
+          marginRight: '-50vw',
+          padding: '20px 0',
+        }}>
+          <div className="mentor-ticker" style={{
+            display: 'flex',
+            width: 'max-content',
+            animation: 'scroll-mentors 60s linear infinite',
           }}>
-            {equipoMentores.map((persona, index) => (
-              <PersonaCard
-                key={index}
-                imagen={persona.imagen}
-                nombre={persona.nombre}
-                cargo={null}
-                linkedinUrl={persona.linkedin}
-                moradoPrincipal={moradoPrincipal}
-                verdePrincipal={verdePrincipal}
-              />
+            {[...equipoMentores, ...equipoMentores].map((persona, index) => (
+              <div key={index} style={{ width: '240px', margin: '0 15px', flexShrink: 0 }}>
+                <PersonaCard
+                  imagen={persona.imagen}
+                  nombre={persona.nombre}
+                  cargo={null}
+                  linkedinUrl={persona.linkedin}
+                  moradoPrincipal={moradoPrincipal}
+                  verdePrincipal={verdePrincipal}
+                />
+              </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* ========================================
-              SECCIÓN 4: EQUIPO TÉCNICO
-          ======================================== */}
+      {/* ========================================
+          SECCIÓN 4: EQUIPO TÉCNICO (FONDO LAVANDA)
+      ======================================== */}
+      <section
+        style={{
+          padding: '80px 20px 100px 20px',
+          backgroundColor: '#f0f9ff',
+          fontFamily: "'Inter', 'Poppins', sans-serif",
+          position: 'relative',
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          borderTop: '1px solid #f1f5f9',
+        }}
+      >
+        <div style={{
+          maxWidth: '1200px',
+          width: '100%',
+          margin: '0 auto',
+          position: 'relative',
+          zIndex: 1,
+        }}>
           <h2 style={{
-            fontSize: 'clamp(1.8rem, 3vw, 2.2rem)',
-            fontWeight: 700,
+            fontSize: 'clamp(1.8rem, 3.5vw, 2.2rem)',
+            fontWeight: 800,
             textAlign: 'center',
-            margin: '0 0 40px 0',
+            margin: '0 0 50px 0',
             color: moradoPrincipal,
-            letterSpacing: '-0.02em',
-            lineHeight: 1.2,
-            position: 'relative',
           }}>
             Equipo técnico
-            <div style={{
-              position: 'absolute',
-              bottom: '-10px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              width: '80px',
-              height: '3px',
-              background: `linear-gradient(90deg, ${verdePrincipal}, ${moradoPrincipal})`,
-              borderRadius: '2px',
-            }}></div>
           </h2>
 
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '20px',
-            marginBottom: '40px',
+            gap: '30px',
           }}>
             {equipoTecnico.map((persona, index) => (
               <PersonaCard
@@ -533,77 +529,49 @@ const Nosotros = () => {
               />
             ))}
           </div>
-
-          {/* ========================================
-              ESTILO PARA CENTRAR LAS ÚLTIMAS TARJETAS
-          ======================================== */}
-          <style>{`
-            @media (min-width: 969px) {
-              div[style*="grid-template-columns: repeat(4, 1fr)"] > div:nth-child(13) {
-                grid-column: 2 / 3;
-              }
-              div[style*="grid-template-columns: repeat(4, 1fr)"] > div:nth-child(14) {
-                grid-column: 3 / 4;
-              }
-            }
-          `}</style>
         </div>
 
-        {/* Estilos responsive */}
         <style>{`
-          @media (max-width: 968px) {
-            div[style*="grid-template-columns: 1fr 1fr"] {
-              grid-template-columns: 1fr !important;
-              gap: 30px !important;
-            }
-            
-            div[style*="grid-template-columns: repeat(4, 1fr)"] {
+          @keyframes scroll-mentors {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+
+          .mentor-ticker:hover {
+            animation-play-state: paused;
+          }
+
+          .team-card:hover .card-img {
+            transform: translateY(-5px);
+          }
+
+          .team-card:hover .linkedin-btn {
+            background-color: ${verdePrincipal} !important;
+            color: white !important;
+            transform: rotate(360deg);
+          }
+
+          @media (max-width: 1024px) {
+            .team-card-grid {
               grid-template-columns: repeat(2, 1fr) !important;
-              gap: 15px !important;
             }
             
-            div[style*="grid-template-columns: repeat(3, 1fr)"] {
+            div[style*="gridTemplateColumns: 'repeat(4, 1fr)'"] {
               grid-template-columns: repeat(2, 1fr) !important;
-              gap: 15px !important;
-            }
-            
-            div[style*="max-width: '480px'"] {
-              max-width: 100% !important;
             }
           }
-          
+
           @media (max-width: 768px) {
-            h1, h2 {
-              font-size: 1.8rem !important;
-            }
-            
-            div[style*="padding: 35px"] {
-              padding: 25px !important;
-            }
-          }
-          
-          @media (max-width: 480px) {
-            div[style*="grid-template-columns: repeat(4, 1fr)"] {
+            div[style*="gridTemplateColumns: 'repeat(3, 1fr)'"] {
               grid-template-columns: 1fr !important;
             }
             
-            div[style*="grid-template-columns: repeat(3, 1fr)"] {
+            div[style*="gridTemplateColumns: 'repeat(4, 1fr)'"] {
               grid-template-columns: 1fr !important;
-            }
-            
-            h1 {
-              font-size: 1.6rem !important;
-            }
-            
-            h2 {
-              font-size: 1.5rem !important;
             }
           }
         `}</style>
       </section>
-
-      {/* SECCIÓN 5: ENVIAR MENSAJE */}
-      <EnviarMensaje />
     </>
   );
 };

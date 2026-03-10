@@ -8,7 +8,7 @@ import './App.css';
 import HeroSection from './components/HeroSection';
 import VerticalLines from './components/VerticalLines';
 import AlliesSection from './components/AlliesSection';
-import EnviarMensaje from './components/enviarmensaje';
+
 import Nosotros from './components/nosotros';
 import Servicios from './components/servicios';
 import Contacto from './components/contacto'; // ← DESCOMENTADO (verifica el nombre exacto)
@@ -20,7 +20,7 @@ const PaginaInicio = () => (
     <HeroSection />
     <VerticalLines />
     <AlliesSection />
-    <EnviarMensaje />
+
   </>
 );
 
@@ -32,7 +32,7 @@ const PaginaNosotros = () => (
 );
 
 const PaginaServicios = () => (
-   <>
+  <>
     <Servicios />
   </>
 );

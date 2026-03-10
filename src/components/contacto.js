@@ -1,7 +1,7 @@
 // components/Contacto.js
 import React from 'react';
 import imagenContacto from '../assets/imgServicios/Mesa-de-trabajo-77-768x432.png';
-import EnviarMensaje from './enviarmensaje'; // Importar el componente de formulario
+
 
 const Contacto = () => {
   // Colores principales
@@ -34,7 +34,7 @@ const Contacto = () => {
           filter: 'blur(80px)',
           zIndex: 0
         }}></div>
-        
+
         <div style={{
           position: 'absolute',
           bottom: '-10%',
@@ -54,7 +54,7 @@ const Contacto = () => {
           position: 'relative',
           zIndex: 1,
         }}>
-          
+
           {/* Título principal - Contacto */}
           <h1 style={{
             fontSize: 'clamp(2rem, 4vw, 2.5rem)',
@@ -87,7 +87,7 @@ const Contacto = () => {
             alignItems: 'stretch',
             marginBottom: '60px',
           }}>
-            
+
             {/* COLUMNA IZQUIERDA - Información de contacto */}
             <div style={{
               backgroundColor: 'white',
@@ -114,7 +114,7 @@ const Contacto = () => {
               }}></div>
 
               <div style={{ position: 'relative', zIndex: 1 }}>
-                
+
                 {/* Email */}
                 <div style={{
                   display: 'flex',
@@ -145,7 +145,7 @@ const Contacto = () => {
                     }}>
                       Email
                     </h3>
-                    <a 
+                    <a
                       href="mailto:incubauss@uss.edu.pe"
                       style={{
                         fontSize: '1rem',
@@ -190,7 +190,7 @@ const Contacto = () => {
                     }}>
                       WhatsApp
                     </h3>
-                    <a 
+                    <a
                       href="https://wa.me/51986728883"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -236,7 +236,7 @@ const Contacto = () => {
                     }}>
                       Llámanos
                     </h3>
-                    <a 
+                    <a
                       href="tel:51986728883"
                       style={{
                         fontSize: '1rem',
@@ -269,9 +269,9 @@ const Contacto = () => {
                 border: `4px solid white`,
                 transition: 'transform 0.3s ease',
               }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
-              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
-                <img 
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
+                <img
                   src={imagenContacto}
                   alt="Contacto INCUBA USS"
                   style={{
@@ -302,7 +302,7 @@ const Contacto = () => {
             }}>
               Visítanos en nuestra oficina
             </h2>
-            
+
             <p style={{
               fontSize: '1rem',
               color: '#334155',
@@ -356,8 +356,6 @@ const Contacto = () => {
         `}</style>
       </section>
 
-      {/* Componente EnviarMensaje al final */}
-      <EnviarMensaje />
     </>
   );
 };

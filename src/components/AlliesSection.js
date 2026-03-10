@@ -55,7 +55,7 @@ const AlliesSection = () => {
         filter: 'blur(80px)',
         zIndex: 0
       }}></div>
-      
+
       <div style={{
         position: 'absolute',
         bottom: '-10%',
@@ -74,7 +74,7 @@ const AlliesSection = () => {
         position: 'relative',
         zIndex: 1
       }}>
-        
+
         {/* BANNER DEL TÍTULO */}
         <div style={{
           width: '100%',
@@ -170,165 +170,100 @@ const AlliesSection = () => {
           </div>
         </div>
 
-        {/* GRID DE ALIADOS - 13 LOGOS EN ORDEN ESPECÍFICO */}
+        {/* CAROUSEL DE ALIADOS - LOGO TICKER INFINITO */}
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '30px',
-          marginTop: '20px',
+          width: '100vw',
+          position: 'relative',
+          left: '50%',
+          right: '50%',
+          marginLeft: '-50vw',
+          marginRight: '-50vw',
+          overflow: 'hidden',
+          padding: '20px 0',
         }}>
-          {allies.map((ally, index) => (
-            <div
-              key={index}
-              style={{
-                background: 'white',
-                borderRadius: '16px',
-                padding: '30px 20px',
-                boxShadow: `0 10px 30px -8px ${verdePrincipal}80`,
-                border: `2px solid ${verdePrincipal}`,
-                transition: 'all 0.3s ease',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                minHeight: '140px',
-                cursor: 'pointer',
-                position: 'relative',
-                overflow: 'hidden',
-                // Si es la última tarjeta (índice 12) y estamos en desktop, la centramos
-                ...(index === 12 && {
-                  gridColumn: '2 / 3', // La coloca en la columna del medio
-                }),
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-5px)';
-                e.currentTarget.style.boxShadow = `0 20px 40px -12px ${moradoPrincipal}`;
-                e.currentTarget.style.borderColor = moradoPrincipal;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = `0 10px 30px -8px ${verdePrincipal}80`;
-                e.currentTarget.style.borderColor = verdePrincipal;
-              }}
-            >
-              {/* Elemento decorativo en la esquina */}
-              <div style={{
-                position: 'absolute',
-                top: '-10px',
-                right: '-10px',
-                width: '40px',
-                height: '40px',
-                background: `radial-gradient(circle, ${verdePrincipal}10, transparent 70%)`,
-                borderRadius: '50%',
-                zIndex: 0
-              }}></div>
-              
-              <div style={{
-                position: 'absolute',
-                bottom: '-10px',
-                left: '-10px',
-                width: '40px',
-                height: '40px',
-                background: `radial-gradient(circle, ${moradoPrincipal}10, transparent 70%)`,
-                borderRadius: '50%',
-                zIndex: 0
-              }}></div>
-
-              {/* Logo del aliado */}
-              <img 
-                src={ally.image} 
-                alt={ally.name}
+          <div className="ticker-container" style={{
+            display: 'flex',
+            width: 'max-content',
+            animation: 'scroll 40s linear infinite',
+          }}>
+            {/* Duplicamos el array para el efecto infinito */}
+            {[...allies, ...allies].map((ally, index) => (
+              <div
+                key={index}
+                className="ally-card"
                 style={{
-                  maxWidth: '100%',
-                  maxHeight: '100px',
-                  width: 'auto',
-                  height: 'auto',
-                  objectFit: 'contain',
-                  position: 'relative',
-                  zIndex: 1,
+                  background: 'white',
+                  borderRadius: '12px',
+                  padding: '15px 25px',
+                  margin: '0 15px',
+                  boxShadow: `0 10px 25px -12px rgba(0,0,0,0.15)`,
+                  border: `2px solid ${verdePrincipal}40`,
+                  transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '200px',
+                  height: '100px',
+                  cursor: 'pointer',
+                  flexShrink: 0,
                 }}
-              />
-            </div>
-          ))}
+              >
+                <img
+                  src={ally.image}
+                  alt={ally.name}
+                  style={{
+                    maxWidth: '100%',
+                    maxHeight: '60px',
+                    width: 'auto',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    filter: 'grayscale(20%) contrast(90%)',
+                    transition: 'all 0.3s ease',
+                  }}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Estilos responsive */}
       <style>{`
-        @media (max-width: 968px) {
-          div[style*="grid-template-columns: repeat(3, 1fr)"] {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 20px !important;
-          }
-          
-          /* En tablets, la última tarjeta se centra en su fila de 2 columnas */
-          div[key="12"] {
-            grid-column: 1 / -1 !important;
-            max-width: 50% !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-          }
+        @keyframes scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
-        
+
+        .ticker-container:hover {
+          animation-play-state: paused;
+        }
+
+        .ally-card:hover {
+          transform: translateY(-8px) scale(1.05);
+          box-shadow: 0 20px 40px -15px ${moradoPrincipal}50;
+          border-color: ${moradoPrincipal};
+          border-width: 2px;
+          z-index: 10;
+        }
+
+        .ally-card:hover img {
+          filter: grayscale(0%) contrast(100%);
+          transform: scale(1.1);
+        }
+
         @media (max-width: 768px) {
           div[style*="height: '100px'"] {
             height: 80px !important;
-            max-width: 90% !important;
           }
           
-          h2 {
-            font-size: 1.5rem !important;
+          .ally-card {
+            width: 160px !important;
+            height: 80px !important;
+            margin: 0 10px !important;
+            padding: 10px 15px !important;
           }
-          
-          div[style*="grid-template-columns: repeat(3, 1fr)"] {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 15px !important;
-          }
-          
-          div[style*="min-height: '140px'"] {
-            min-height: 120px !important;
-            padding: 20px !important;
-          }
-          
-          img {
-            max-height: 80px !important;
-          }
-        }
-        
-        @media (max-width: 480px) {
-          div[style*="grid-template-columns: repeat(3, 1fr)"] {
-            grid-template-columns: 1fr !important;
-          }
-          
-          /* En móviles, la última tarjeta ocupa todo el ancho normal */
-          div[key="12"] {
-            grid-column: auto !important;
-            max-width: 100% !important;
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-          }
-          
-          div[style*="height: '100px'"] {
-            height: 70px !important;
-          }
-          
-          h2 {
-            font-size: 1.2rem !important;
-          }
-          
-          div[style*="backgroundSize: '30px 30px'"] {
-            background-size: 20px 20px !important;
-          }
-          
-          div[style*="backgroundSize: '8px 8px'"] {
-            background-size: 6px 6px !important;
-          }
-          
-          div[style*="min-height: '140px'"] {
-            min-height: 100px !important;
-          }
-          
-          img {
-            max-height: 60px !important;
+
+          .ticker-container {
+            animation-duration: 30s !important;
           }
         }
       `}</style>
